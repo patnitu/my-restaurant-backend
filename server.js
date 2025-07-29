@@ -3,6 +3,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import ordersRoutes from './routes/ordersRoutes.js';
+import webhookRoutes from './routes/webhookRoutes.js';
 
 dotenv.config();
 
@@ -11,6 +12,8 @@ app.use(cors());
 app.use(express.json());
 
 app.use('/api/orders', ordersRoutes);
+
+app.use('/api/webhook', webhookRoutes);
 
 const PORT = process.env.PORT || 3000;
 
