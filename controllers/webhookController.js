@@ -14,3 +14,14 @@ export const receiveWebhook = async (req, res) => {
     res.status(500).send('Error saving webhook');
   }
 };
+
+export const getAllWebhooks = async (req, res) => {
+  try {
+    const allEvents = await webhookDAO.getAllWebhookPayloads();
+    res.status(200).json(allEvents);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Error fetching webhook payloads');
+  }
+};
+

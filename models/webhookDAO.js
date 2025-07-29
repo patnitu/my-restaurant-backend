@@ -7,3 +7,13 @@ export const saveWebhookPayload = async (payload) => {
   );
   return result.rows[0];
 };
+
+export const getAllWebhookPayloads = async () => {
+  const result = await pool.query(
+    `SELECT id, event_type, payload, received_at
+     FROM webhook_events
+     ORDER BY received_at DESC`
+  );
+  return result.rows;
+};
+
